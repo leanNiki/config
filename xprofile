@@ -1,0 +1,51 @@
+#!/bin/sh
+userresources=$HOME/.config/xresources
+usermodmap=$HOME/.Xmodmap
+sysresources=/etc/X11/xinit/.Xresources
+sysmodmap=/etc/X11/xinit/.Xmodmap
+
+# merge in defaults and keymaps
+
+if [ -f $sysresources ]; then
+    xrdb -merge $sysresources
+fi
+
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
+fi
+
+if [ -f "$userresources" ]; then
+    xrdb -merge "$userresources"
+fi
+
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
+fi
+
+# add ~/bin folder to path
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin/platform-tools:$PATH
+
+# zsh default directory
+export ZDOTDIR="$HOME/.config/zsh"
+
+# java default directory
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=$HOME/.config/java
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Node Version Manager
+export NVM_DIR="$HOME/.config/nvm"
+# actually load nvm/node
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# set wallpaper
+feh  --bg-scale "$HOME/.config/wallpaper" --no-fehbg
+
+# start music player daemon (if no other user instance exists)
+[ ! -s $HOME/.config/mpd/pid ] && mpd
+
+# set capslock to escape
+setxkbmap -option caps:escape
+
+# increase key-repeat initialization + speed
+xset r rate 220 45
