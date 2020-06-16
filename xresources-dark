@@ -1,0 +1,63 @@
+! black
+*color0: #181818
+! red
+*color1: #ab4642  
+! green
+*color2: #a1b56c
+! yellow
+*color3: #f7ca88
+! blue
+*color4: #7cafc2 
+! magenta
+*color5: #ba8baf  
+! cyan
+*color6: #86c1b9  
+! light gray
+*color7: #d8d8d8  
+! dark gray
+*color8: #585858  
+! bright red
+*color9: #de5b56  
+! dark green
+*color10: #80924e 
+! orange
+*color11: #dc9656 
+! dark blue
+*color12: #6197ab 
+! bright magenta
+*color13: #ba8baf 
+! bright cyan
+*color14: #86c1b9 
+! white
+*color15: #f8f8f8 
+
+! orange
+*color16: #dc9656
+! brown
+*color17: #a16946 
+! Base 01
+*color18: #282828
+! base 02
+*color19: #383838
+! Base 04
+*color20: #b8b8b8 
+! Base 06
+*color21: #e8e8e8
+
+*foreground: #d8d8d8
+*background: #181818
+*cursorColor: #d8d8d8
+
+Xcursor.size: 16
+
+
+xterm.vt100.selectToClipboard : true
+xterm.vt100.faceName : xft:SourceCodePro:size=12
+
+URxvt.font: xft:SourceCodePro:size=12
+URxvt.scrollBar: false
+URxvt.internalBorder: 0
+URxvt.borderColor: #181818
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: true
+URxvt.saveLines: 65535
