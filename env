@@ -1,0 +1,22 @@
+#!/bin/sh
+
+
+# add ~/bin folder to path
+#export PATH=$PATH:$HOME/bin
+#export PATH=$PATH:$HOME/bin/platform-tools
+
+# default apps
+export SHELL=/bin/zsh
+export EDITOR='/usr/bin/emacs -nw'
+export VISUAL='/usr/bin/emacs -nw'
+export BROWSER=/sbin/brave
+
+export XAUTHORITY="$HOME/.config/Xauthority"
+export ZDOTDIR="$HOME/.config/zsh"
+export NVM_DIR="$HOME/.config/nvm"
+export LESSHISTFILE="-"
+
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=$HOME/.config/java
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+

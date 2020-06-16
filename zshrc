@@ -1,19 +1,29 @@
 # zsh Config
 
+# load env variables
+[ -f "$HOME/.config/env" ] && source "$HOME/.config/env"
+
 # zsh Options
 ## History
 HISTFILE=~/.config/zsh/history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt INC_APPEND_HISTORY
 bindkey '^R' history-incremental-search-backward
 
-# My Options
-#set default apps through env variables
-export SHELL=/bin/zsh
-export EDITOR='/usr/bin/emacs -nw'
-export VISUAL='/usr/bin/emacs -nw'
-export BROWSER=/usr/bin/firefox
+setopt alwaystoend
+setopt autocd
+setopt autolist
+setopt automenu
+setopt extendedglob
+setopt histignorealldups
+setopt incappendhistory
+setopt nobeep
+setopt nocaseglob
+setopt nomenucomplete
+setopt numericglobsort
+setopt pathdirs
+
+
 
 # urxvt line-wrap fix
 for (( i=1; i<=$LINES; i++ )); do echo; done; clear
@@ -68,8 +78,8 @@ promptinit
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' check-for-changes true
-zstyle ':vcs_info:git*' unstagedstr "±"
-zstyle ':vcs_info:git*' formats "  %b %u%c "
+zstyle ':vcs_info:git*' unstagedstr "+"
+zstyle ':vcs_info:git*' formats " %b %u%c "
 precmd() {
 	vcs_info
 }
@@ -89,29 +99,6 @@ export PS1='%K{$bg1}%F{$fg1} %~ %K{$bg2}%F{$fg2} ${vcs_info_msg_0_}%k%f'
 autoload -Uz compinit
 compinit
 
-# If a completion is performed with the cursor within a word, and a full completion is inserted,
-# the cursor is moved to the end of the word
-setopt ALWAYS_TO_END
-
-# If a command cant be found, but is a directory, automatically cd into it
-setopt AUTO_CD
-
-# Automatically use menu completion after the second consecutive request for completion
-setopt AUTO_MENU
-
-# Automatically list choices on an ambiguous completion. 
-setopt AUTO_LIST
-
-# Perform a path search even on command names with slashes in them.
-setopt PATH_DIRS
-
-# Make globbing (filename generation) sensitive to case.
-unsetopt CASE_GLOB
-
-# On an ambiguous completion, instead of listing possibilities or beeping, insert the first match immediately.
-# Then when completion is requested again, remove the first match and insert the second match, etc.
-unsetopt MENU_COMPLETE
-
 # completion module options
 # group matches and describe.
 zstyle ':completion:*:*:*:*:*' menu select
@@ -127,6 +114,7 @@ zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion 
 # directories
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories

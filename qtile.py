@@ -47,14 +47,16 @@ keys = [
     Key([m], "u", lazy.layout.shrink()),
     Key([m], "o", lazy.layout.maximize()),
     # Launching applications
-    # Terminal Application
-    Key([m, s], "Return", lazy.spawn("urxvt")),
-    # Application Launcher
-    Key([m], "p", lazy.spawn("dmenu_run")),
     # Qtile application launcher
     Key([m], "r", lazy.spawncmd(prompt='shell>')),
+    # Application Launcher
+    Key([m], "p", lazy.spawn("dmenu_run")),
+    # Terminal Application
+    Key([m, s], "Return", lazy.spawn("urxvt")),
     # Emacs
     Key([m, s], "e", lazy.spawn("emacs")),
+    # Browser
+    Key([m, s], "w", lazy.spawn("brave")),
 
     # Change the volume and music if our keyboard has keys
     Key( [], "XF86AudioRaiseVolume", lazy.spawn("pulsemixer --change-volume +5")),
@@ -120,12 +122,18 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
 ])
 
+widget_defaults = dict(
+    font='sans',
+    fontsize=14,
+    padding=3,
+)    
+
 # Define StatusBar
 def getBar():
     return bar.Bar([
         widget.GroupBox(
             margin_x = 0,
-            margin_y = 0,
+            margin_y = 2,
             borderwidth = 0,
             padding_x = 10,
             rounded = False,
@@ -159,12 +167,12 @@ def getBar():
             background = red,
         ),
         widget.Wlan(
-            interface = "wlp58s0",
+            interface = "wlo1",
             foreground = foreground,
             background = red,
         ),
         widget.Net(
-            interface = "wlp58s0",
+            interface = "wlo1",
             foreground = white,
             background = red,
         ),
