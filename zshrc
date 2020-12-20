@@ -26,14 +26,12 @@ setopt pathdirs
 
 
 # urxvt line-wrap fix
-for (( i=1; i<=$LINES; i++ )); do echo; done; clear
-
-# Autojump
-source /etc/profile.d/autojump.sh
+#for (( i=1; i<=$LINES; i++ )); do echo; done; clear
 
 ## Aliases
 alias bm='bashmount'
 alias cputemp='sensors'
+alias e='emacs -nw'
 alias g='git'
 alias l='ls --color'
 alias ls='ls --color'
@@ -41,7 +39,7 @@ alias la='ls -al --color'
 alias ll='ls -l --color'
 alias s='shutdown'
 alias wm='sudo wifi-menu'
-alias we='~/bin/getweather.sh'
+alias we='curl wttr.in/vienna | grep -Fe│ -e─ | less -cFKRSX'
 alias xo='xdg-open'
 alias youtube-dl-mp3='youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg'
 
@@ -87,16 +85,26 @@ precmd() {
 setopt PROMPT_SUBST
 bg1=blue
 fg1=black
-bg2=red
+bg2=yellow
 fg2=black
 
 #uncomment for powerline, need to have patched fonts installed
 #export PS1='%K{$bg1}%F{$fg1} $(fish-dir) %K{$bg2}%F{$bg1}%F{$fg2}${vcs_info_msg_0_}%k%F{$bg2}%f'
 export PS1='%K{$bg1}%F{$fg1} %~ %K{$bg2}%F{$fg2} ${vcs_info_msg_0_}%k%f'
 
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-r
+
 # Completion System (mostly copied from eriner/zim)
 # Enable autocomplete
-autoload -Uz compinit
+autoload -Uz compinit zcalc
 compinit
 
 # completion module options

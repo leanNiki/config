@@ -1,0 +1,91 @@
+## Full Default config at /usr/share/doc/ncmpcpp/bindings
+
+## movement and basic music playing
+def_key "k"
+  scroll_up
+
+def_key "K"
+  select_item
+  scroll_up
+
+def_key "j"
+  scroll_down
+
+def_key "J"
+  select_item
+  scroll_down
+
+def_key "h"
+  previous_column
+
+def_key "l"
+  next_column
+
+def_key "l"
+  enter_directory
+
+def_key "l"
+  play_item
+
+def_key "o"
+  jump_to_playing_song
+
+def_key "space"
+  pause
+
+def_key "s"
+  stop
+
+def_key "f"
+  seek_forward
+
+def_key "b"
+  seek_backward
+
+def_key "+"
+  volume_up
+
+def_key "-"
+  volume_down
+
+## playlist commands
+def_key "ctrl-k"
+  move_sort_order_up
+
+def_key "ctrl-k"
+  move_selected_items_up
+
+def_key "ctrl-j"
+  move_sort_order_down
+
+def_key "ctrl-j"
+  move_selected_items_down
+
+def_key "p"
+  add_item_to_playlist
+
+def_key "d"
+  delete_playlist_items
+
+def_key "d"
+  delete_stored_playlist
+
+def_key "."
+  show_lyrics
+
+## show different screens (Also 1-9)
+
+def_key "9"
+  show_clock
+
+def_key "t"
+  show_tag_editor
+
+def_key "m"
+  show_media_library
+
+def_key "m"
+  toggle_media_library_columns_mode
+
+def_key "p"
+  toggle_visualization_type
